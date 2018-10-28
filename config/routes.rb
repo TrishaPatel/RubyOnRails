@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :users
+  resources :employees
   get 'home',to: 'welcome#home'
   get 'about', to: 'welcome#about'
   root 'welcome#index'

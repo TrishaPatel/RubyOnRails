@@ -1,3 +1,4 @@
 class Employee < ActiveRecord::Base
-validates :Firstname, presence :true,length:{minium:5,maximum:10}
+  validates:Firstname,presence:true,length:{minimum:5,maximum:30}
+#validates :firstname, presence :true
 end
