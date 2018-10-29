@@ -15,7 +15,7 @@ class EmployeesController < ApplicationController
     @employee=Employee.find(params[:id])
     if @employee.update(employeeparam)
       flash[:notice]="Employee Updated Sucessfully"
-      redirect_to employee_path(@employee)
+      redirect_to @employee
     else
       render 'edit'
     end
@@ -25,7 +25,7 @@ class EmployeesController < ApplicationController
       @employee=Employee.new(employeeparam)
       if @employee.save
         flash[:notice]="Employee Added Sucessfully"
-           redirect_to employee_path(@employee)
+          redirect_to @employee
       else
          render 'new'
       end
@@ -34,7 +34,12 @@ class EmployeesController < ApplicationController
   def show
     @employee=Employee.find(params[:id])
   end
-
+ def destroy
+    @employee=Employee.find(params[:id])
+    @employee.destroy
+    flash[:notice]="Employee Deleted Sucessfully"
+    redirect_to employees_path
+ end
   private
     def employeeparam
         params.require(:employee).permit(:Firstname,:Lastname,:gender)

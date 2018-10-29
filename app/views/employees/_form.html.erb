@@ -1,0 +1,20 @@
+<% if @employee.errors.any?  %>
+  <ul>
+  <%= @employee.errors.full_messages.each do |msg| %>
+    <li> <%= msg %></li>
+  <%  end %>
+</ul>
+<% end %>
+
+<%= form_for @employee do |f| %>
+ <%= f.label:Firstname  %>
+<%=  f.text_field:Firstname %>
+<br>
+<%= f.label:Lastname %>
+<%= f.text_field:Lastname %>
+<br>
+<br>
+<%= f.radio_button(:gender,'Male') %>Male &nbsp; <%= f.radio_button(:gender,'Female') %>Female
+<br>
+<%= f.submit %>
+<% end %>
